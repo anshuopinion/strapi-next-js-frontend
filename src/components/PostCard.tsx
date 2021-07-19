@@ -6,17 +6,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 interface PostCardProps {
   post: IPost;
+  vertical?: boolean;
 }
 
-const PostCard: FC<PostCardProps> = ({ post }) => {
+const PostCard: FC<PostCardProps> = ({ post, vertical = true }) => {
   return (
-    <Box maxW="300px" boxShadow="md" borderRadius="xl" overflow="hidden">
-      <Stack>
-        <Box>
+    <Box
+      height={vertical ? "auto" : "200px"}
+      boxShadow="md"
+      borderRadius="xl"
+      overflow="hidden"
+    >
+      <Stack direction={vertical ? "column" : "row-reverse"}>
+        <Box width={vertical ? 300 : 600}>
           <Image
             src={process.env.NEXT_PUBLIC_BACKEND + post.cover.formats.small.url}
-            height={200}
-            width={300}
+            height={vertical ? 200 : 300}
+            width={vertical ? 300 : 400}
             alt="light"
           />
         </Box>
@@ -24,7 +30,11 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
           <Heading as="h3" fontSize="2xl" mb="2">
             {post.title}
           </Heading>
-          <Text fontSize="md">{post.content}</Text>
+          <Text fontSize="md">
+            {vertical
+              ? post.description.split(" ").splice(0, 20).join(" ") + "..."
+              : post.description.split(" ").splice(0, 40).join(" ")}
+          </Text>
           <Flex justify="space-between" align="center">
             <Flex align="center">
               <Icon>

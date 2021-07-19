@@ -5,6 +5,7 @@ declare interface IImage {
   caption: string;
   width: number;
   height: number;
+
   formats: {
     thumbnail: {
       name: string;
@@ -41,6 +42,7 @@ declare interface IImage {
   updated_at: Date;
 }
 declare interface IPost {
+  description: string;
   id: number;
   title: string;
   content: string;

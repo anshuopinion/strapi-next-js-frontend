@@ -1,4 +1,4 @@
-import { Box, Container, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Container, Divider, Grid, GridItem } from "@chakra-ui/react";
 import axios from "axios";
 import Hero from "components/Hero";
 import NavBar from "components/Navbar";
@@ -10,6 +10,10 @@ export default function Home({ data }: { data: IPost[] }) {
     <Container maxW="1300px">
       <NavBar />
       <Hero />
+      <Box mb="4">
+        <PostCard vertical={false} post={data[0]} />
+      </Box>
+
       <Box>
         <Grid
           gridGap="4"
