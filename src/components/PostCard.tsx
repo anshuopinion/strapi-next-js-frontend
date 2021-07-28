@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Heading } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 interface PostCardProps {
   post: IPost;
   vertical?: boolean;
@@ -42,7 +43,9 @@ const PostCard: FC<PostCardProps> = ({ post, vertical = true }) => {
               </Icon>
               <Text ml="1">5</Text>
             </Flex>
-            <Button colorScheme="purple">Read More</Button>
+            <Link href={`${post.id}`} passHref>
+              <Button colorScheme="purple">Read More</Button>
+            </Link>
           </Flex>
         </Box>
       </Stack>

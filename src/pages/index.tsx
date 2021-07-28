@@ -8,7 +8,6 @@ import { GetServerSideProps } from "next";
 export default function Home({ data }: { data: IPost[] }) {
   return (
     <Container maxW="1300px">
-      <NavBar />
       <Hero />
       <Box mb="4">
         <PostCard vertical={false} post={data[0]} />
